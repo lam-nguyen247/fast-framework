@@ -14,10 +14,9 @@ class RouteServiceProvider extends ServiceProvider {
 	 * @throws AppException
 	 */
 	public function boot(): void {
-		Route::middleware('web:api')
+		Route::middleware('api:request')
 			->prefix('api')
 			->namespace('App\\Http\\Controllers\\Api')
-			->group(route_path('api.php'))
-			->register();
+			->path(route_path('api.php'));
 	}
 }

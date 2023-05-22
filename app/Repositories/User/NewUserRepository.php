@@ -8,7 +8,7 @@ use App\Http\Requests\Request;
 use Fast\Http\Exceptions\AppException;
 use Fast\Supports\Patterns\Abstracts\AppRepository as Repository;
 
-class NewUserRepository extends Repository implements UserInterface {
+class NewUserRepository extends Repository {
 	public function __construct() {
 		parent::__construct();
 	}
@@ -21,7 +21,7 @@ class NewUserRepository extends Repository implements UserInterface {
 	 * @throws AppException|ReflectionException
 	 */
 	public function getList(Request $request): mixed {
-		return 3;
+		return $this->model->first();
 	}
 
 }

@@ -12,6 +12,7 @@ return [
 	'aliases' => [
 		'Str' => Fast\Supports\Facades\Str::class,
 		'App' => Fast\Supports\Facades\App::class,
+		'View' => Fast\Supports\Facades\View::class,
 		'Auth' => Fast\Supports\Facades\Auth::class,
 		'Hash' => Fast\Supports\Facades\Hash::class,
 		'Log' => Fast\Supports\Facades\Logger::class,

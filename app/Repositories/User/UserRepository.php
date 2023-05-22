@@ -9,11 +9,10 @@ use App\Http\Requests\Request;
 use App\Resources\UserResource;
 use Fast\Http\Exceptions\AppException;
 use Fast\Supports\Patterns\Abstracts\AppRepository as Repository;
-use Log;
 
 class UserRepository extends Repository implements UserInterface {
-	public function __construct() {
 
+	public function __construct() {
 		parent::__construct();
 	}
 
@@ -25,7 +24,8 @@ class UserRepository extends Repository implements UserInterface {
 	 * @throws AppException|ReflectionException
 	 */
 	public function getList(Request $request): mixed {
-		Log::info('test');
-		return 2;
+		$data = $this->get();
+		$collection = new UserResource($data);
+		return $collection->handle($request);
 	}
 }

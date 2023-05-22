@@ -9,7 +9,7 @@ class UserResource extends Collection {
 		return $this->map(function ($item) use ($request) {
 			return [
 				'id' => $item['id'] ?? null,
-				'last_name' => $item['last_name'] . ' ' . $request->ext ?? null,
+				'full_name' => $item['full_name'] ?? null,
 			];
 		});
 	}

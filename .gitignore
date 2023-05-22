@@ -1,6 +1,9 @@
 .env
-/vendor
+vendor
+.idea
+identifier.sqlite
 composer.lock
+
 .DS_Store
 Fast
-.idea
+*.rdb

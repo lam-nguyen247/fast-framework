@@ -6,9 +6,9 @@ use Fast\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel {
 	public array $routeMiddlewares = [
-		'web:api' => \App\Http\Middlewares\ApiAuth::class,
-		'web:auth' => \App\Http\Middlewares\Auth::class,
+		'api:auth' => \App\Http\Middlewares\Auth::class,
 		'checkPermission' => \App\Http\Middlewares\CheckPermission::class,
+		'api:request' => \App\Http\Middlewares\ApiRequest::class,
 	];
 
 	/**

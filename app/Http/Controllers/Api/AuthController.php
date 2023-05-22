@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use ReflectionException;
 use Fast\Supports\Facades\Auth;
 use App\Http\Requests\Request;
 use App\Http\Requests\Auth\LoginRequest;
@@ -16,7 +17,7 @@ class AuthController extends Controller {
 	 * @param LoginRequest $request
 	 *
 	 * @return Response
-	 * @throws AppException
+	 * @throws AppException|ReflectionException
 	 */
 	public function login(LoginRequest $request): Response {
 		$email = $request->get('email');
@@ -26,10 +27,9 @@ class AuthController extends Controller {
 			$token = $user->createToken([
 				'exp' => 60 * 24 * 30, // 60 min x 24 hours x 30 days
 			]);
-
 			return $this->respond([
 				'token' => $token,
-				'user' => $user,
+				'user' => array_except($user->getData(['full_name', 'last_name', 'first_name', 'email']), ['token']),
 			]);
 		}
 		return $this->respondError('Unauthorized', 401);
@@ -49,7 +49,7 @@ class AuthController extends Controller {
 	 *
 	 * @param Request $request
 	 * @return Response
-	 * @throws AppException
+	 * @throws AppException|ReflectionException
 	 */
 	public function getCurrentUser(Request $request): Response {
 		return $this->respond($request->user('api'));

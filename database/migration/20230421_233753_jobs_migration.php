@@ -1,6 +1,5 @@
 <?php
 
-use Fast\Database\Migrations\Migration;
 use Fast\Database\DatabaseBuilder\Schema;
 use Fast\Database\DatabaseBuilder\ColumnBuilder;
 
@@ -10,7 +9,7 @@ class CreateJobsTable {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('jobs', function (ColumnBuilder $table) {
+		Schema::createIfNotExists('jobs', function (ColumnBuilder $table) {
 			$table->increments('id')->comment('id of jobs');
 			$table->string('queue');
 			$table->longText('payload');
