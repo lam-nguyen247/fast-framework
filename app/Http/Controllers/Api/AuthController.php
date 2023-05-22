@@ -27,6 +27,7 @@ class AuthController extends Controller {
 			$token = $user->createToken([
 				'exp' => 60 * 24 * 30, // 60 min x 24 hours x 30 days
 			]);
+			$user->save();
 			return $this->respond([
 				'token' => $token,
 				'user' => array_except($user->getData(['full_name', 'last_name', 'first_name', 'email']), ['token']),
