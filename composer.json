@@ -33,11 +33,7 @@
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "post-create-project-cmd": [
-            "php creator key:generate",
-            "php creator jwt:install",
-            "php creator config:cache"
-        ]
+        "post-create-project-cmd": []
     },
     "config": {
         "preferred-install": "dist",
