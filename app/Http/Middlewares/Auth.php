@@ -6,6 +6,7 @@ use Closure;
 use Fast\Http\Request;
 use Fast\Http\Exceptions\AppException;
 use Auth as Authenticate;
+use Fast\Auth\AuthenticationException;
 
 class Auth {
 	/**
@@ -21,6 +22,6 @@ class Auth {
 		if (Authenticate::check()) {
 			return $next($request);
 		}
-		throw new AppException('Unauthorized', 401);
+		throw new AuthenticationException('Unauthorized', 401);
 	}
 }
